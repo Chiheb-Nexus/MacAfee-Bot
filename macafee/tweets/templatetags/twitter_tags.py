@@ -49,5 +49,8 @@ def get_hashtags(tweet):
 
 @register.filter(name='get_urls')
 def get_urls(tweet):
-    url = [k.expanded_url for k in tweet.urls]
-    return '<a href="{0}">{1}</a>'.format(url[0], url[0])
+    try:
+        url = [k.url for k in tweet.urls]
+        return '<a href="{0}">{1}</a>'.format(url[0], url[0])
+    except Exception as e:
+        return ''

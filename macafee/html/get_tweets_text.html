@@ -1,0 +1,12 @@
+<html>
+<head>
+  <title> Tweets Text </title>
+</head>
+<body>
+    {% for tweet in tweets_all %}
+    <div>
+      {{ tweet|safe }}
+    </div>
+    {% endfor %}
+</body>
+</html>

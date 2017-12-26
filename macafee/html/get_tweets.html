@@ -4,31 +4,13 @@
   <title> Tweets </title>
 </head>
 <body>
-  <div class="block social-block social-twitter">
-      {% load twitter_tags %}
-      <h1>Jhon MacAfee Tweets</h1>
-          {% for tweet in tweets_all %}
-
-              <div class="tweet-meta">
-                  <a href="https://www.twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id }}" target="_blank">
-                      <img src="{{ tweet.user.profile_image_url }}" width="32" height="32" />
-                      <h2>{{ tweet.user.name }}<br /><span>@{{ tweet.user.screen_name }} &middot; {{ tweet.created_at|twitter_date }}</span></h2>
-                  </a>
-              </div>
-              <br \>
-                . Hashtags: {{ tweet|hashtags}}<br \>
-                . URL: {{ tweet|get_urls|safe }}<br \>
-                . Text:
-                <p>
-                  {{ tweet.text }}
-                </p>
-                {{ tweet }}
+  <div>
+    {% for tweet, tweet_html in tweets_all %}
+      {{ tweet.text }} <br \>
+      {{ tweet_html|safe }}<br \>
+    {% endfor %}
 
 
-
-          {% endfor %}
-
-      <a href="#" class="btn btn-round btn-red">"More tweets"</a>
   </div>
 </body>
 </html>
